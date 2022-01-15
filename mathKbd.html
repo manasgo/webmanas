@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCQ image generator By Manas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--mathematical keyboard-->
+<script src="//unpkg.com/mathlive/dist/mathlive.min.js"></script>
+  
+<style type="text/css">
+#qs {
+  border: 5px ridge green;
+  padding-left: 5px;
+  width: 95%;
+  height: 80px;
+}
+input[type=text]{
+  width: 20%;
+  padding: 4px;
+}
+#html-content-holder{
+  width: 95%;
+  background-color: #fff;
+  color: #000;
+  margin: 2% auto;
+  padding: 10px;
+}
+#html-content-holder ul {
+  list-style-type: none;
+  padding-left: 15px;
+}
+#html-content-holder ul li {
+  margin-bottom: 5px;
+}
+button {
+  width: 100%;
+  background: green;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  transition: all 0.3s;
+}
+button:hover {
+  background: #fff;
+  border: 2px ridge green;
+  color: green;
+}
+#BGcolorGet, #colorGet {
+  width: 40%;
+  border-width: 0 0 2px 0;
+  border-color: green;
+  border-radius: 5px;
+  margin: 5px;
+} 
+input[type=color]{
+  width: 50px;
+}
+label {
+  color: gray;
+  font-family: monospace;
+  font-size: 12px;
+}
+#OutQs{
+  font-size: 17px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body onload="javascript: alert('click just after preview button area to write using mathematical keyboard');">
+ <textarea id="qs" placeholder="Write question here">\int 2x\,dx = x^2+C</textarea>
+
+ <input type="text" id="Ans1" placeholder="A)">
+ <input type="text" id="Ans2" placeholder="B)">
+ <input type="text" id="Ans3" placeholder="C)">
+ <input type="text" id="Ans4" placeholder="D)">
+ <br><br>
+ <label>Background color: </label><input type="color" id="BGcolor" value="#ffffff">
+  <label>Text color: </label><input type="color" id="Textcolor" value="#000000">
+  <br><br>
+ <button onclick="preview()">Preview</button>
+ <div id="html-content-holder"> <!--output-->
+   <div>
+     <math-field virtual-keyboard-mode=auto id="OutQs"></math-field>
+</div>
+   <ul>
+     <li id="Option1"></li>
+     <li id="Option2"></li>
+     <li id="Option3"></li>
+     <li id="Option4"></li>
+   </ul>
+ </div>
+    
+ 
+<script>
+
+function preview() {
+var question = document.getElementById("qs").value
+var option1 = document.getElementById("Ans1").value;  
+var option2 = document.getElementById("Ans2").value;  
+var option3 = document.getElementById("Ans3").value;  
+var option4 = document.getElementById("Ans4").value;  
+
+document.getElementById("OutQs").innerHTML = question;
+document.getElementById("Option1").innerHTML = "A) "+option1;
+document.getElementById("Option2").innerHTML = "B) "+option2;
+document.getElementById("Option3").innerHTML = "C) "+option3;
+document.getElementById("Option4").innerHTML = "D) "+option4;
+// color change
+let outBGcolor=document.getElementById("BGcolor").value;
+let outTextcolor=document.getElementById("Textcolor").value;
+document.getElementById("html-content-holder").style.backgroundColor = outBGcolor;
+document.getElementById("html-content-holder").style.color = outTextcolor;
+}
+
+        
+        
+</script>
+</body>
+</html>
+                        
