@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCQ image generator By Manas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<!--mathematical form-->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!--google translate-->
+  <script type="text/javascript" src=
+"https://translate.google.com/translate_a/element.js?
+        cb=googleTranslateElementInit">
+    </script> 
+<style type="text/css">
+#qs {
+  border: 5px ridge green;
+  padding-left: 5px;
+  width: 90%;
+  height: 80px;
+}
+input[type=text]{
+  width: 20%;
+  padding: 4px;
+  margin-top: 15px;
+}
+#html-content-holder{
+  width: 95%;
+  background-color: #fff;
+  color: #000;
+  margin: 2% auto;
+  padding: 10px;
+  text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.3);
+}
+#html-content-holder ul {
+  list-style-type: none;
+  padding-left: 15px;
+}
+#html-content-holder ul li {
+  margin-bottom: 5px;
+}
+button {
+  width: 100%;
+  background: green;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  transition: all 0.3s;
+}
+button:hover {
+  background: #fff;
+  border: 2px ridge green;
+  color: green;
+}
+#BGcolorGet, #colorGet {
+  width: 40%;
+  border-width: 0 0 2px 0;
+  border-color: green;
+  border-radius: 5px;
+  margin: 5px;
+} 
+input[type=color]{
+  width: 50px;
+}
+label {
+  color: gray;
+  font-family: monospace;
+  font-size: 12px;
+}
+#symbol {
+    float: right;
+    margin: 0px 5% 0 0;
+    background: silver;
+    padding: 5px 6px;
+    border-radius: 2px;
+    box-shadow: 0.5px 0.5px 1px #000;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #f4f5f5, #e3edf7);
+    font-family: arial;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+#symbol:hover {
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+#symContainer {
+  width: 95%;
+  height: 200px;
+  overflow-y: scroll;
+  display: none;
+  grid-template-columns: repeat(10, auto);
+  grid-gap: 3px;
+  background-color: #e3edf7;
+  margin: 1% auto;
+  padding: 5px;
+}
+ #icons {
+   width: 7.5vw;
+  text-align: center;
+  border: none;
+  background-color: #e3edf7;
+  box-shadow: 1px 1px #ccc, -1px -1px #fff;
+} 
+ #icons:hover{
+  background-color: #c2c2c270;
+  cursor: pointer;
+  box-shadow: none;
+}
+</style>
+</head>
+<body>
+ <div id="google_translate_element"></div> 
+ <textarea id="qs" placeholder="Write question here"></textarea>
+
+ <a id="symbol" href="#">symbols</a>
+ <div id="symContainer">
+  <input id="icons" type="button" onclick="input(this);" value="&#8704;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8706;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8707;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8708;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8709;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8712;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8713;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8719;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8720;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8721;">
+  <input id="icons" type="button" onclick="input(this);" value="&#43;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8722;">
+  <input id="icons" type="button" onclick="input(this);" value="&#215;">
+  <input id="icons" type="button" onclick="input(this);" value="&#247;">
+  <input id="icons" type="button" onclick="input(this);" value="&#177;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8730;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8731;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8732;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8733;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8734;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8894;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8736;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8737;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8738;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8739;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8869;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8740;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8741;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8742;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8745;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8746;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8834;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8835;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8836;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8837;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8838;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8839;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8747;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8748;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8749;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8750;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8751;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8752;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8753;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8754;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8755;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8756;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8757;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8764;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8771;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8776;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8780;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8801;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8802;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8804;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8805;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8652;">
+  
+  <input id="icons" type="button" onclick="input(this);" value="&#916;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8486;">
+  <input id="icons" type="button" onclick="input(this);" value="&#948;">
+  <input id="icons" type="button" onclick="input(this);" value="&#949;">
+  <input id="icons" type="button" onclick="input(this);" value="&#950;">
+  <input id="icons" type="button" onclick="input(this);" value="&#951;">
+  <input id="icons" type="button" onclick="input(this);" value="&#1012;">
+  <input id="icons" type="button" onclick="input(this);" value="&#952;">
+  <input id="icons" type="button" onclick="input(this);" value="&#953;">
+  <input id="icons" type="button" onclick="input(this);" value="&#954;">
+  <input id="icons" type="button" onclick="input(this);" value="&#955;">
+  <input id="icons" type="button" onclick="input(this);" value="&#956;">
+  <input id="icons" type="button" onclick="input(this);" value="&#957;">
+  <input id="icons" type="button" onclick="input(this);" value="&#958;">
+  <input id="icons" type="button" onclick="input(this);" value="&#960;">
+  <input id="icons" type="button" onclick="input(this);" value="&#961;">
+  <input id="icons" type="button" onclick="input(this);" value="&#962;">
+  <input id="icons" type="button" onclick="input(this);" value="&#963;">
+  <input id="icons" type="button" onclick="input(this);" value="&#964;">
+  <input id="icons" type="button" onclick="input(this);" value="&#965;">
+  <input id="icons" type="button" onclick="input(this);" value="&#966;">
+  <input id="icons" type="button" onclick="input(this);" value="&#967;">
+  <input id="icons" type="button" onclick="input(this);" value="&#968;">
+  <input id="icons" type="button" onclick="input(this);" value="&#969;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8450;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8461;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8469;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8473;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8474;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8477;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8484;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9825;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9829;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9746;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9989;">
+  <input id="icons" type="button" onclick="input(this);" value="&#10004;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13224;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13231;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13216;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13217;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13220;">
+  <input id="icons" type="button" onclick="input(this);" value="&#13221;">
+  <input id="icons" type="button" onclick="input(this);" value="&#12850;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8448;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8449;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8451;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8453;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8457;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8455;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8487;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8491;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9645;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9723;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9651;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9722;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9711;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9899;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9754;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9755;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9888;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8360;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9986;">
+<!--Subcript letter-->
+  <input id="icons" type="button" onclick="input(this);" value="&#8336;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8337;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8338;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8339;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8341;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8342;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8343;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8344;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8345;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8346;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8347;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8348;">
+  <!--subcript number-->
+  <input id="icons" type="button" onclick="input(this);" value="&#8320;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8321;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8322;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8323;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8324;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8325;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8326;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8327;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8328;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8329;">
+  <!--superscript letterr-->
+  <input id="icons" type="button" onclick="input(this);" value="&#170;">
+  <input id="icons" type="button" onclick="input(this);" value="&#186;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8305;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8319;">
+  <!--superscript number-->
+  <input id="icons" type="button" onclick="input(this);" value="&#8304;">
+  <input id="icons" type="button" onclick="input(this);" value="&#185;">
+  <input id="icons" type="button" onclick="input(this);" value="&#178;">
+  <input id="icons" type="button" onclick="input(this);" value="&#179;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8308;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8309;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8310;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8311;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8312;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8313;">
+<!--Superscript symbols-->
+  <input id="icons" type="button" onclick="input(this);" value="&#8314;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8315;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8316;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8317;">
+  <input id="icons" type="button" onclick="input(this);" value="&#8318;">
+<!--chess pieces-->
+  <input id="icons" type="button" onclick="input(this);" value="&#9812;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9813;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9814;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9815;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9816;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9817;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9818;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9819;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9820;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9821;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9822;">
+  <input id="icons" type="button" onclick="input(this);" value="&#9823;">
+   </div>
+
+ <p style="font-size:10px; position: relative;bottom: -20px;">options here:</p> 
+ <input type="text" id="Ans1" placeholder="A)">
+ <input type="text" id="Ans2" placeholder="B)">
+ <input type="text" id="Ans3" placeholder="C)">
+ <input type="text" id="Ans4" placeholder="D)">
+ <br><br>
+ <label>Background color: </label><input type="color" id="BGcolor" value="#ffffff">
+  <label>Text color: </label><input type="color" id="Textcolor" value="#000000">
+  <br><br>
+ <button onclick="preview()">Preview</button>
+ <div id="html-content-holder"> <!--output-->
+   <div id="OutQs">When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</div>
+   <ul>
+     <li id="Option1"></li>
+     <li id="Option2"></li>
+     <li id="Option3"></li>
+     <li id="Option4"></li>
+   </ul>
+ </div>
+    
+  <button id="btn-Preview-Image">Take Screenshot</button>
+    <br/>
+    <h3>Preview :</h3>
+    <div id="previewImage"> </div>
+    <a id="btn-Convert-Html2Image" href="#">Download</a>
+<script>
+
+function preview() {
+var question = document.getElementById("qs").value
+var option1 = document.getElementById("Ans1").value;  
+var option2 = document.getElementById("Ans2").value;  
+var option3 = document.getElementById("Ans3").value;  
+var option4 = document.getElementById("Ans4").value;  
+
+document.getElementById("OutQs").innerHTML = question;
+document.getElementById("Option1").innerHTML = "A) "+option1;
+document.getElementById("Option2").innerHTML = "B) "+option2;
+document.getElementById("Option3").innerHTML = "C) "+option3;
+document.getElementById("Option4").innerHTML = "D) "+option4;
+// color change
+let outBGcolor=document.getElementById("BGcolor").value;
+let outTextcolor=document.getElementById("Textcolor").value;
+document.getElementById("html-content-holder").style.backgroundColor = outBGcolor;
+document.getElementById("html-content-holder").style.color = outTextcolor;
+}
+
+
+$(document).ready(function(){
+
+	
+var element = $("#html-content-holder"); // global variable
+var getCanvas; // global variable
+ 
+    $("#btn-Preview-Image").on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+	$("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png", 0.9);
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "M.C.Q.png").attr("href", newData);
+	});
+
+});
+//toggle function
+document.getElementById("symbol").addEventListener("click",
+function(){
+var SV = document.getElementById("symContainer");
+if(SV.style.display === "grid"){
+SV.style.display = "none";
+}else{
+  SV.style.display = "grid";
+}
+});
+
+//symbols input
+
+function input(q) {
+    var symbol = document.getElementById("qs");
+    symbol.value = symbol.value + q.value;
+}
+
+//google translate
+function googleTranslateElementInit() { 
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'}, 
+                'google_translate_element'
+            ); 
+        } 
+</script>
+</body>
+</html>
+                        
