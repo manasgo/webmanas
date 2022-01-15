@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MathEq by Manas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+  <script async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML-full">
+	</script>
+<style type="text/css">
+#qs {
+  border: 5px ridge green;
+  padding-left: 5px;
+  width: 90%;
+  height: 80px;
+}
+.TexRef{
+  float: right;
+  margin: 3px 5% 0 0;
+  font-size: 10px;
+  text-decoration: none;
+}
+.TexRef:hover{
+ text-decoration: underline;
+}
+input[type=text]{
+  width: 20%;
+  padding: 4px;
+  margin-top: 15px;
+}
+#html-content-holder{
+  width: 95%;
+  background-color: #fff;
+  color: #000;
+  margin: 2% auto;
+  padding: 10px;
+  text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.3);
+}
+#html-content-holder ul {
+  list-style-type: none;
+  padding-left: 15px;
+}
+#html-content-holder ul li {
+  margin-bottom: 5px;
+}
+button {
+  width: 100%;
+  background: green;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  transition: all 0.3s;
+}
+button:hover {
+  background: #fff;
+  border: 2px ridge green;
+  color: green;
+}
+#BGcolorGet, #colorGet {
+  width: 40%;
+  border-width: 0 0 2px 0;
+  border-color: green;
+  border-radius: 5px;
+  margin: 5px;
+} 
+input[type=color]{
+  width: 50px;
+}
+label {
+  color: gray;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+</style>
+</head>
+<body>
+ 
+ <textarea id="qs" placeholder="write in TeX format..">The\ value\ of\ \lim_{x\to 0}\frac{sin\ x}{x} =\ 1</textarea>
+<a href="http://asciimath.org/#syntax" class="TexRef">view TeX syntax</a>
+
+ <p style="font-size:10px; position: relative;bottom: -20px;">options here:</p> 
+ <input type="text" id="Ans1" placeholder="A)">
+ <input type="text" id="Ans2" placeholder="B)">
+ <input type="text" id="Ans3" placeholder="C)">
+ <input type="text" id="Ans4" placeholder="D)">
+ <br><br>
+ <label>Background color: </label><input type="color" id="BGcolor" value="#ffffff">
+  <label>Text color: </label><input type="color" id="Textcolor" value="#000000">
+  <br><br>
+ <button onclick="preview()">Preview</button>
+ <div id="html-content-holder"> <!--output-->
+<div id="OutQs">
+			`The\ value\ of\ \lim_{x\to 0}\frac{sin\ x}{x} =\ 1`
+</div>
+
+   <ul>
+     <li id="Option1"></li>
+     <li id="Option2"></li>
+     <li id="Option3"></li>
+     <li id="Option4"></li>
+   </ul>
+ </div>
+    
+  <button id="btn-Preview-Image">Take Screenshot</button>
+    <br/>
+    <h3>Preview :</h3>
+    <div id="previewImage"> </div>
+    <a id="btn-Convert-Html2Image" href="#">Download</a>
+
+  
+  <script>
+		window.MathJax = {
+				"fast-preview": {
+       					disabled: true
+				},
+				AuthorInit: function() {
+					MathJax.Hub.Register.StartupHook('End', function() {
+						MathJax.Hub.processSectionDelay = 0
+						var qs = document.getElementById('qs')
+						var OutQs = document.getElementById('OutQs')
+						var math = MathJax.Hub.getAllJax('OutQs')[0]
+						qs.addEventListener('input', function() {
+							MathJax.Hub.Queue(['Text', math, qs.value])
+						})
+					})
+				}
+			}
+
+	</script>
+
+<script>
+function preview() {
+//var question = document.getElementById("qs").value
+var option1 = document.getElementById("Ans1").value;  
+var option2 = document.getElementById("Ans2").value;  
+var option3 = document.getElementById("Ans3").value;  
+var option4 = document.getElementById("Ans4").value;  
+
+//document.getElementById("OutQs").innerHTML = question;
+document.getElementById("Option1").innerHTML = "A) "+option1;
+document.getElementById("Option2").innerHTML = "B) "+option2;
+document.getElementById("Option3").innerHTML = "C) "+option3;
+document.getElementById("Option4").innerHTML = "D) "+option4;
+// color change
+let outBGcolor=document.getElementById("BGcolor").value;
+let outTextcolor=document.getElementById("Textcolor").value;
+document.getElementById("html-content-holder").style.backgroundColor = outBGcolor;
+document.getElementById("html-content-holder").style.color = outTextcolor;
+};
+
+
+$(document).ready(function(){
+
+	
+var element = $("#html-content-holder"); // global variable
+var getCanvas; // global variable
+ 
+    $("#btn-Preview-Image").on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+	$("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png", 0.9);
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "MCQ.jpg").attr("href", newData);
+	});
+
+});
+
+     
+</script>
+</body>
+</html>
+                        
