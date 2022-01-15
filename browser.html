@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Browser by Manas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale= 1.0, user-scalable= 0">
+<style>
+	* {
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; 
+  font-family: sans-serif;
+}
+body {
+  /*border: 1px solid black;*/
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient( 109.6deg,  rgba(114,210,39,1) 11.3%, rgba(182,235,141,1) 100.2% );
+}
+.totalarea {
+  height: 100vh;
+  border: 3px solid white;
+  border-radius: 10px;
+  margin: 5px;
+  
+}
+.topBar {
+  /*border:1px solid black; */
+  margin: 10px 0px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 58% repeat(3, 14%);
+}
+.topIcons {
+  /*border: 1px solid black; */
+ font-size: 20px;
+}
+.home{
+  justify-self: start;
+  margin-left: 10px;
+}
+.user, .nTab, .tDot {
+  justify-self: center;
+}
+.tDot {
+ /* border: 1px solid black; */
+  font-weight: bold;
+  text-align: center;
+}
+.user {
+  background: rgba(255,255,255,0.5);
+  padding: 4px;
+  border-radius: 50%;
+}
+  .searchBox {
+    margin: 0% auto;
+    /*border: 1px solid black; */
+    width: 90vw;
+    
+  }
+  .google-logo {
+   /*border: 1px solid black; */
+   height: 25px;
+   width: 25px;
+    position: absolute;
+    margin: 8px 7px; 
+  }
+  .fa-arrow-circle-right {
+ /*   border: 1px solid red; */
+    font-size: 25px;
+    color: rgba(0,0,0,0.4);
+    position: absolute;
+    margin: 2px -32px;
+    border-radius: 100%;
+  }
+  .fa-arrow-circle-right:hover{
+    color: green;
+    transform: scale(1.2, 1.20);
+    transition: all 0.3s;
+  }
+  #search {
+    border: 1px solid #cccccc; 
+    width: 100%;
+    border-radius: 20px;
+    padding: 12px 35px;
+    outline: none;
+    transition: border 0.5s;
+  }
+  #search:focus {
+    border: 1px solid goldenrod;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 5px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: all 0.2s;
+  }
+  .menuBar {
+    /*border: 1px solid black; */
+    margin-top: 5px;
+    padding: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  .menuBar a {
+    text-decoration: none;
+    margin: 0px 10px;
+    padding: 4px 10px;
+    color: rgb(0,0,0);
+    background: rgba(255,255,255,0.4);
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  .menuBar a:active {
+    box-shadow: none;
+  }
+  .apps {
+    /*border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+     
+  }
+  .apps .fab {
+    /*border: 1px solid black; */
+    margin: 5px;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  .apps .fab:hover{
+    transform: scale(1.14);
+    transition: all 0.3s;
+  }
+
+  .bottomMenu {
+    /*border: 1px solid black; */
+    width: 100%;
+    position: fixed;
+    bottom: 1px;
+    right: 0px;
+    display: flex;
+    border-radius: 5px 5px 0px 0px;
+    background: #ddd;
+   flex-direction: row;
+    /*justify-content: space-between;*/
+    box-shadow: 2px -2px 2px rgba(0,0,0,0.5);
+  }
+  .bottomMenu .fas {
+   /* border: 1px solid black; */
+    margin: 0px 30px 0px 20px;
+    font-size: 20px;
+    padding: 5px;
+    opacity: 0.5;
+  }
+  .Msymbol {
+ /*   border: 1px solid black; */
+    padding: 3px;
+    font-size: 22px;
+    position: absolute;
+    right: 5%;
+  }
+  .Msymbol:hover{
+    transform: scale(1.2, 1.2);
+    transition: all 0.4s;
+  }
+  .dropdown-content {
+    display: none;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+    border-radius: 5px;
+    background: #f1f1f1;
+    position: absolute;
+    bottom: 33px;
+    right: 3vw;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    z-index: 1; 
+  }
+  .dropdown-content > div {
+   /*border-bottom: 1px solid rgba(0,0,0,0.1); */
+   color: rgba(0,0,0,0.8);
+   padding: 5px 15px;
+   transition: all 0.2s;
+  }
+  .dropdown-content > div:hover {
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    color: green;
+  }
+  
+ .menuDropdown-content {
+     display: none; 
+  }
+  .tDot-dropdown:hover .menuDropdown-content{
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    background: #f1f1f1;
+    position: absolute;
+    right: 3vw;
+    top: 3vh;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    z-index: 1;
+  } 
+.menuDropdown-content > div {
+  /*border: 1px solid black; */
+  color: rgba(0,0,0,0.8);
+   padding: 6px 15px;
+   margin: 3px 0px;
+   transition: all 0.3s;
+}
+.menuDropdown-content > div:hover {
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    color: green;
+  }
+  .menuDropdown-content div > .fas {
+    margin: 0px 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="totalarea">
+    <div class="topBar">
+      <div class="topIcons home">&#8962;</div>
+      <div class="topIcons user">&#128100;</div>
+      <div class="topIcons nTab">&#10064;</div>
+
+     <div class="tDot-dropdown">
+      <div class="topIcons tDot" onclick="tDotDropdown()">&#8942;</div>
+      <div class="menuDropdown-content">
+      <div><b>&#8635;</b> Refresh</div>
+     <div>&#129323; Privet mode</div>
+      <div>&#11088; Add bookmarks</div>
+      <div><i class="fas fa-share-alt"></i>Share</div>
+      <div>&#128269; Find in page</div>
+      <div>&#128421; destop site</div>
+      <div>&#128424; Print</div>
+    </div> <!--end menu-dropdown content-->
+    </div><!--tDot-dropdown end-->
+    
+    </div><!--end topBar-->
+  <div class="searchBox">
+    <svg class="google-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="67px" height="71px" viewBox="-0.5 -0.5 67 71" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-04T06:43:57.742Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;ezUTRkw11F39hS7qyruQ&quot; version=&quot;14.8.4&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;htwpFNiUEixM5XAKz0BO&quot; name=&quot;Page-1&quot;&gt;jZNLT4QwEMc/DUcJ0H24R8V1PfhK9mA8Fjq2TQqDpbuAn95iy0uziRcy/c2j0/8MAUmL9qBpJZ6QgQqSiLUBuQuSZLu7tt8edA6syMoBriVzKJ7AUX6Bgz6NnySDehFnEJWR1RLmWJaQmwWjWmOzDPtAtby0ohz+gGNO1V/6JpkRvrl1NPEHkFwMN8eR9xR0CPagFpRhM0NkH5BUIxpnFW0KqpdukMXl3V/wjo1pKM1/ElRK08Pn7uW5Kpv3bZZVLO+uiKtypurkH+ybNd2gAKO1gL5GFJBbPBklS0hHtXsoTKGsGVuTKslLa+e2KdAWKJqBesVaGokLxxm0kVbnx18BGRqDxSzgxpc0WFlqVaz6xoqW9+sWNpAp5FiHHJHblt1zbCq0F3WKR/Xt0gIWYHRnQ3wCWXsN/MImW3dspvFv1qGPEbPZb3ahX23ql46Pxae5WMOPZjhOK/Djm/1GZP8N&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs/><g><path d="M 33.83 41.62 L 33.83 29.1 L 64.18 29.1 C 64.91 32.38 65.2 37.19 64.28 42.68 C 62.93 49.88 59.53 56.34 53.89 60.76 L 43.41 52.65 C 48.74 49.82 50.8 45.4 51.46 41.62 Z" fill="#3a7cec" stroke="none" pointer-events="all"/><path d="M 44.98 51.7 L 55.22 59.64 C 49.08 65.69 37.2 69.4 26.27 66.59 C 16.23 64.27 7.75 56.68 4.09 47.91 L 15.06 40.13 C 17.19 47.42 22.57 52.84 29.73 54.37 C 35.63 55.65 40.92 54.4 44.98 51.7 Z" fill="#2ba14b" stroke="none" pointer-events="all"/><path d="M 4.88 49.63 C 0.23 40.55 0 28.78 5.86 18.78 L 16.19 27.04 C 14.3 31.2 13.79 36.59 15.48 41.44 Z" fill="#f1b500" stroke="none" pointer-events="all"/><path d="M 4.89 20.54 C 9.13 12.79 15.32 7.26 23.84 4.33 C 37.83 0 49.67 5.47 55.39 11.18 L 46.37 20.26 C 42.92 16.82 36.13 13.81 28.26 16.2 C 22.57 17.97 17.64 22.31 15.5 28.8 Z" fill="#e33e2b" stroke="none" pointer-events="all"/></g></svg>
+
+   <!--<img class="google-logo" src="googleLogo.png" width="40px" height="35px"> -->
+<input id="search" type="text" name="glSearch" placeholder="Search or enter address">
+
+<span class="fas fa-arrow-circle-right" onclick="search()">&#10146;</span>
+</div>
+
+<div class="menuBar">
+  <a id="apps" onclick="globeMenu()" href="#" style="border-bottom: 2px solid white;">Apps</a>
+  <a id="about" onclick="about()" href="#">about</a>
+  <a id="ct" onclick="contact()" href="#">Contact</a>
+</div>
+
+<div class="apps">
+<svg class="fab fa-facebook" onclick="FBopen()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 251 261" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-06T04:09:26.339Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;LXcVVRBiWUuFZ83LpkUq&quot; version=&quot;14.8.4&quot;&gt;&lt;diagram id=&quot;YfRe0LKTjeSkcZMjXDER&quot; name=&quot;Page-1&quot;&gt;tVVdj5swEPw1PJ7E5yV9LNwlrXQnRUJqHysHDFhnvNSYg9yv7xoMhJBIvSrNQ2TP7g7eGS9YXlR2e0mq4hVSyi3XTjvLe7JcdxNs8V8DpwHwHw2QS5YOkDMDMfugBrQN2rCU1otEBcAVq5ZgAkLQRC0wIiW0y7QM+PKpFcnpCogTwtfoT5aqYkC3gT3j3yjLi/HJjm0iJRmTDVAXJIX2DPKeLS+SAGpYlV1EudZu1GWo292ITgeTVKi/Kfi13x+aA/ntRT+i4/c429Hj4cEfWN4Jb0zD5rDqNCqALCg2bkJSV4PEGesosoacHCkPSfKWS2hEGgEH2Rd5vvu4CbHFMAOhjKsuSjMAY6IAoXlrJeFtktdBpFAlN0tzQCoV7W527kx64j2kUFIlT5hiCrzRAnMH3Y3Zt7Oj7uhocebmBBJzi/KJexYaF0brT+jufkb3tmCKxhVJdKTFMVsq9C+2CHjRSYbhpicXYMY4v8Z2D4/8YOnRl2DtkX3NI/t/eeStPMpWJmHD6sINznKB6wQbpyhUqGVh+EL5agIlS1NdHkpasw9y7Kn0ZFTAhOqbCEIreNJcjYJ6GB7n6pxcna7YHO/SWXRs1//u45hvXzi2XU/V9k5Dhdv5RdnHzr423vMf&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs/><g><ellipse cx="125" cy="125" rx="125" ry="125" fill="#ffffff" pointer-events="all"/><ellipse cx="125" cy="125" rx="100" ry="100" fill="#4267b2" stroke="none" pointer-events="all"/><rect x="85" y="10" width="80" height="250" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 135px; margin-left: 125px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 200px; font-family: Helvetica; color: #FFFFFF; line-height: 1.2; pointer-events: all; font-weight: bold; white-space: nowrap; ">f</div></div></div></foreignObject><text x="125" y="195" fill="#FFFFFF" font-family="Helvetica" font-size="200px" text-anchor="middle" font-weight="bold">f</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
+
+
+<svg class="fab fa-whatsapp" onclick="WPopen()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 76 76" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-06T16:44:45.685Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;j4swwkSiMoj2dN7d2FYX&quot; version=&quot;14.8.4&quot;&gt;&lt;diagram id=&quot;YwLL3iWE926B4ath5vrB&quot; name=&quot;Page-1&quot;&gt;jZNLb6QwDIB/DceOgHQe13Y6u5W2rao+tNLeMsRDsg2YBjMw/fU1EAbYqtLmEDmfHcfxIxDbrPnpZKHvUYEN4lA1gbgJ4ni93PDeglMPLlcepM6oHkUjeDYfMIeVUVDOECFaMsUcJpjnkNCMSeewnpsd0M4fLWQKX8BzIu1X+tso0j3dLMOR34JJ9fByFHrNXiZvqcMq9+8FsTh0q1dncvDl7UstFdYTJHaB2DpE6qWs2YJtMztkrb/34xvtOW4HOf3PBb17v61/iSf1Gj4c/1S79frl78Wy93KUtoLhG12wdBoSpGSpofURBuIaK7Imh+25GC3UlFkWIxalNWnOcsJBgWNg5R7sI5aGDM4UR3BkuAx3/xjskQizicGVd0lYMOUsFm1gWZO23bioYW8xxXJRa0mlLDobcvjGMVp03ReE6hZrDsbaCY+XN2K1ajnm5Dsz4sJc+6xwBNB8m+7oXEQeDcAMyJ3YxF8QG59KPxY8GP25HrtsfbnwUE9ajKmfIOl7Oz17H+vLgi/xcBxbqdNNplXsPgE=&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g><path d="M 0 74.8 L 6.7 54.98 C 4.14 50.75 1.44 44.67 1.44 35.67 C 1.44 18.34 15.46 0 37.92 0 C 60.84 0 74.4 19.55 74.4 35.74 C 74.4 56.35 57.99 72.86 37.71 72.86 C 31.99 72.86 27.91 72.02 20.33 68.1 Z" fill="#ffffff" stroke="#dddddd" stroke-miterlimit="10" pointer-events="all"/><rect x="0" y="0" width="0" height="0" fill="none" stroke="#dddddd" pointer-events="all"/><path d="M 9.52 65.29 L 21.2 61.33 C 26.36 65.26 32.59 66.73 37.63 66.73 C 54.39 66.73 68.2 53.16 68.2 36.17 C 68.2 18.83 53.35 5.98 38.21 5.98 C 20.41 5.98 7.5 20.82 7.5 35.53 C 7.5 44.5 10.46 49.95 13.48 53.97 Z M 56.02 44.1 C 57.09 48.15 55.15 50.82 52.84 51.81 C 49.43 53.48 47.6 53.72 42.82 52.24 C 32.35 49.4 21.56 37.54 20.4 29.83 C 19.77 25.29 21.34 22.93 24.01 20.03 C 25.81 19.52 27.46 19.33 28.69 19.96 L 32.87 28.9 C 32.24 30.48 30.86 32.07 29.27 33.65 C 33.33 39.59 37.9 43.52 43.11 45.04 L 47.36 40.07 Z" fill="#25d366" stroke="none" pointer-events="all"/></g></svg>
+
+
+<svg class="fab fa-gmail" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 90 90" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-07T06:49:00.047Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;1nNjlJDXGSTa7hKHV6B2&quot; version=&quot;14.8.4&quot;&gt;&lt;diagram id=&quot;WWpz8dTvh1ySlHeC4_LC&quot; name=&quot;Page-1&quot;&gt;rZTLboMwEEW/hmUR75Bl82oXjdoqVbM2MAFLhqHGKaRfX1ObV6KojVQWyD4ee4Z7xxjuMm8eOCmzLSbADMdKGsNdGY4z80P5bsFJAS/QIOU0UcgewI5+gYKBhkeaQDWJE4hM0HIKYywKiMWEEc6xnoYdkE2TliSFC7CLCbuke5qITNHQtwb+CDTNusy2pVdy0gVrUGUkwXqE3LXhLjmiUKO8WQJrpetkUfs2V1b7wjgU4i8bwi0/LN7Dmfu8fyuCjyB6jTZ3M3XKJ2FH/cG6WHHqFKgzKmBXkrid19Jjw11kImdyZsshqUql+4E2IFMt9InABTRXS7V7AWTfAOYg+EmG6A3O3DNt3Sa6bey536N6ZERoer6i2ciGESa6AdI+y6CRHGiZbpDM/12yhFRZq8XKknrgUTBawLJvUOtMQEbTQo5jKQ5wCRiJgL1gRQXFyUKrKZWt+XQWEKEQmI8C7vWRAluzZOOVbWF5k7Y31KwhYphiZaY5oewf7HKtYOKVYwcXRgWeGV765AVmaI0f72bT5HS4Qz9ro/+Qu/4G&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs/><g><rect x="0.18" y="0.18" width="88.45" height="88.45" fill="#ffffff" pointer-events="all"/><path d="M 17.51 67.76 L 16.55 21 L 73.53 21.05 L 74.25 67.8 Z" fill="#fffef9" stroke="none" pointer-events="all"/><path d="M 19.16 66.65 L 72.66 30.42 L 74.25 67.8 L 69.63 67.8 L 44.44 50.88 L 19.8 67.74 L 19.17 67.77 Z" fill="#ccccbe" stroke="none" pointer-events="all"/><path d="M 19.17 67.77 L 14.89 67.76 C 13.39 67.76 12 66.52 12 64.88 L 12.03 24.06 C 12.03 22.37 13.44 21.06 14.78 21.06 L 16.72 21 L 44.4 40.9 L 69.93 22.68 L 70.02 32.61 L 44.44 50.88 L 19.16 32.75 Z" fill="#ed4335" stroke="none" pointer-events="all"/><path d="M 69.63 67.8 L 69.6 22.9 L 72.41 21.04 L 74.22 21.09 C 75.44 21.09 76.8 22.33 76.8 23.95 L 76.8 64.69 C 76.8 66.85 75.06 67.8 74.25 67.8 Z" fill="#a6332a" stroke="none" pointer-events="all"/></g></svg>
+
+
+<svg class="fab fa-youtube" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 61 61" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-06T09:52:28.522Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;3AvmLbQNNXjCDirRda_T&quot; version=&quot;14.8.4&quot;&gt;&lt;diagram id=&quot;QAOW8apNbPbiwWgvnfX_&quot; name=&quot;Page-1&quot;&gt;rVTfT4MwEP5reJwBurH5KLipUROTJfpoOnqDJoUjpRPmX+9hywAXoya+kOt3P3r9vjs8lhTtjeZV/ogClBf6ovXYtReGy8WKvh1wtMA8ckCmpbBQMABb+Q4WjBx4kALqSZxBVEZWUzDFsoTUTDCuNTbTsD2q6aUVz+AM2KZcnaMvUpjcoquFP+C3ILO8vznwnafgfbAD6pwLbEYQW3ss0YjGWkWbgOqo62mxeZtvvKfGNJTmNwlsDY/3d8UseRbl6nb2fPkOchbaKm9cHdyDXbPm2DNAVYhsOsRNLg1sK552nobUJiw3haJTQCavK6vAXrZAl8auNmgD7bdNBycqaIIACzD6SCEugQXMprjpiZb22AxaRI7ffCRDj3GnfnYqPBBEhuPoD3wFP/MleJ13z7/2iQI8GCVLSE7T6X/hTMmsJDslPkAToPgO1BPW0kicODoaJc3lw5eAHRqDxSjgypU02OlDU1d1jRVt1q3nRQM7hRnWF0dq7bCDVyI/3kulElSoP1/ANpswov1jMaUISQ2MfPEiWAab/1C23wun7Mo/U3YenSvL5n9Wlo7Dln36Rn8qtv4A&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ff2626-1-b5171f-1-s-0"><stop offset="0%" style="stop-color:#FF2626"/><stop offset="100%" style="stop-color:#B5171F"/></linearGradient></defs><g><ellipse cx="30" cy="30" rx="30" ry="30" fill="#ffffff" pointer-events="all"/><path d="M 13.02 46.08 C 10.36 45.64 8.41 44.2 7.63 39.57 C 7.09 36.74 7 25.89 7.43 22.09 C 8.12 15.91 9.66 14.31 13.63 13.57 C 17.26 13 41.48 13.02 45.59 13.48 C 49.23 13.75 51.67 15.69 52.33 20.29 C 53 24.92 52.9 32.15 52.43 38.13 C 51.98 42.84 50.75 46.03 45.46 46.3 C 34.61 47 23.79 47 13.02 46.08 Z" fill="url(#mx-gradient-ff2626-1-b5171f-1-s-0)" stroke="none" pointer-events="all"/><path d="M 25.03 36.61 L 25.04 22.93 L 37.29 29.64 Z" fill="#ffffff" stroke="none" pointer-events="all"/><path d="M 36.12 30.31 L 25.04 22.93 L 37.29 29.64 Z" fill="#a6a6a6" stroke="none" pointer-events="all"/></g></svg>
+
+ <svg class="fab fa-twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 91 91" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-06T11:29:44.556Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;zvpBtcMTMIKjJK06pjUT&quot; version=&quot;14.8.4&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;6AU__uNmBTkd72gmF-HU&quot; name=&quot;Page-1&quot;&gt;rZRNU4MwEIZ/Dcc6fFisR4W2HqzjTJ3RawpbEg0sE7ZC/fUmJpRiddQZL0zy7Ec2727woqTslorVfIU5SC/0886LUi8ML6Yz/TVgb8F57EChRG5RMIC1eAMHfUd3Iodm5EiIkkQ9hhlWFWQ0YkwpbMduW5TjU2tWwAlYZ0ye0keRE7d0NvUHfgOi4P3Jge8sJeudHWg4y7E9QtHcixKFSHZVdglIo12vi41bfGM9FKagot8E4PNTzjd3D9lyuXrz+V06qeNJaLO8MrlzF3bF0r5XoOWCYF2zzOxb3WQvuuZUSr0L9JI1tdV9KzrQR127jKAIum9LDQ4C6MEBLIHUXru4gDCe2pB9PwxOw3ZowaVD/Ej9njHX9OKQedBFL5w0f5Ap+FmmnDXc3D/1tQa4IykqSA5D6X8STYqi0utMCwJKA8k2IO+xESRwZDA6Cj2Ot58cNkiE5ZHDlUtJaBqkh602hZVdYZ7lWQsbiQU2Z9QKspm3QsoEJaqP+qMgvQoWoQklhS/QWyqs4D86OvPHHQ1POxp/0dHp3zuqt8Oj+rAd/Zmi+Ts=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs/><g><rect x="0" y="0" width="90" height="90" fill="#ffffff" pointer-events="all"/><path d="M 15 62.75 C 21.36 63.61 28.45 61.71 33.22 57.88 C 28.14 57.74 23.4 54.76 21.73 49.75 C 23.82 50.17 25.63 50.02 27.28 49.53 C 22.72 48.57 17.52 44.88 17.37 37.88 C 19.26 38.9 21.24 39.38 23.02 39.36 C 18.28 36.36 15.59 30.15 19.18 23.61 C 25.52 31.42 35.51 35.62 44.54 35.96 C 43.46 30.58 45.69 25.73 50.47 23.1 C 56.18 20 62.26 21.94 65.57 25.26 C 68.12 24.81 70.73 23.9 73.41 22.36 C 72.2 25.38 70.57 27.33 67.92 28.92 C 69.97 28.63 72.16 28.31 75 27.05 C 73.41 29.35 71.32 31.39 68.87 33.1 C 69.52 44.76 63.01 56.18 54.45 61.88 C 42.67 69.67 27.12 70 15 62.75 Z" fill="#1da1f2" stroke="none" pointer-events="all"/></g></svg>
+ 
+
+<svg class="fab circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="40px" height="40px" viewBox="-0.5 -0.5 69 105" content="&lt;mxfile host=&quot;app.diagrams.net&quot; modified=&quot;2021-07-06T10:44:13.413Z&quot; agent=&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot; etag=&quot;cD2Ls8p_C04vUZsH274x&quot; version=&quot;14.8.4&quot; type=&quot;device&quot;&gt;&lt;diagram id=&quot;iEyPIHBPZHVkqoY_hFsB&quot; name=&quot;Page-1&quot;&gt;rZRNb6MwEIZ/DceV+AgRPW5INz1spVY59Lhy8QSsGg8yk0Ly69fEQwhJKm2llTjYz4zH4/e1CZK87jdWNNUzStBBHMo+SNZBHEdxHAfDF8qDJ4uH0IPSKslJE9iqI3iYMdwrCe0sjxA1qWYOCzQGCpoxYS1287Qd6vmmjSjhBmwLoW/pm5JUcXNpOPEnUGU17hyFHKnFmMygrYTE7gIlj0GSW0Tyo7rPQQ/ajbL4db++iJ4bs2DoXxbkIGjz8fR+fP69eX2LXsjAnx8LX+VT6D0fOIhX3C8dRhEIerfFqqJaOxC5odCqNG5cuM3BOvAJlpST7ScHaiXlsHxloVVH8X4qFbp5g8rQyZR0FaTrodaesPW+D6VbsvgBOWp0ddcGDZzh6MCQtkNDfFuyoS4fxLUB/ZcKRWfd3X0FrIHswaXwgmTJVvFVzXjaTcanS4+qS89DVlHwXSvPlSc73IAd+YY76R13rqzpKkWwbUQxzDv3BK98ahv/KnaqB3lHtjvCKq3vqn8F/4fg6WIm+EN2I/gyuxV8ZN/Q202nl3aKXfyukse/&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs/><g><rect x="6" y="0" width="56" height="104" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 52px; margin-left: 34px;"><div style="box-sizing: border-box; font-size: 0; text-align: center; "><div style="display: inline-block; font-size: 80px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: nowrap; ">+</div></div></div></foreignObject><text x="34" y="76" fill="#000000" font-family="Helvetica" font-size="80px" text-anchor="middle">+</text></switch></g><rect x="0" y="18" width="68" height="68" fill="none" stroke="none" pointer-events="all"/></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
+
+</div>
+
+<div class="bottomMenu">
+  <div class="fas fa-chevron-left"> &#11013;&#65039;
+  </div>
+  <div class="fas fa-chevron-left">&#x27a1;&#xfe0f;</div>
+  
+  <div class="dropdown">
+<div class="Msymbol">&#x24c2;&#xfe0f;</div>
+  <div class="dropdown-content">
+    <div>&#128278; Bookmarks</div>
+    <div>&#128339; History</div>
+    <div>&#128229; Download</div>
+    <div>&#127770; Night mode</div>
+    <div>&#128736; Setting</div>
+  </div>
+  </div>
+
+</div>
+
+</div><!--end total area-->
+
+<script>
+  function search(){
+    var gSearch= document.getElementById("search").value;
+    url = 'https://www.google.com/search?q='+ gSearch;
+    window.open(url, '_blank');
+  }
+  function contact() {
+    window.open('social-media (1).html', '_parent');
+  }
+  function FBopen(){
+    window.open('facebookLogIn.html', '_parent');
+  }
+function WPopen() {
+  var repNo = prompt("Recipient number with country code: ");
+window.open('https://wa.me/'+repNo, '_self');
+}
+
+</script>
+</body>
+</html>
