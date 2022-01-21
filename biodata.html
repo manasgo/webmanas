@@ -4,8 +4,11 @@
 <title>bioData</title>
 <meta name="viewport" content="width=device-width">
 <style type="text/css">
+/* for style print use @media print*/
+@media print,screen {
 * {
   box-sizing: border-box;
+   -webkit-print-color-adjust: exact; 
 }
 *::selection {background: #0077c0; color: #fff;}
 body {
@@ -13,7 +16,7 @@ body {
 }
 #main{
   width: 210mm; 
-  height: 290mm;
+  height: 300mm;
   border: 2px solid #000;
   padding: 0 20px;
   margin: 0;
@@ -24,6 +27,7 @@ h1 {
   width: 100%;
   text-align: center;
   text-decoration: underline;
+  text-shadow: 0.5px 0.5px 1px #ccc;
 }
 #address img {
   float: right;
@@ -33,6 +37,10 @@ h1 {
  h3 {
  position: relative;
  top: 10px;
+ background: #008000;
+  color: #fff;
+  padding: 3px;
+ text-shadow: 0.5px 0.5px 1px #000;
 }
 #studies table, #tecEd table {
   width: 100%;
@@ -44,7 +52,8 @@ h1 {
   text-align: center;
   padding: 4px;
 }
-#tecEd table th, #tecEd table td{
+#tecEd table th,
+#tecEd table td {
   border: 1px solid #999999;
   text-align: center;
   padding: 5px;
@@ -52,6 +61,7 @@ h1 {
 #hobby {
   margin-top: 30px;
   line-height: 2.5px;
+  text-shadow: 0.5px 0.5px 1px #ccc;
 }
 #end {
   margin-top: 100px;
@@ -90,9 +100,16 @@ details{
 summary {
  color: #0645ad;
 }
+
+table th{
+  background: #8080ff;
+  color: #fff;
+  text-shadow: 0.5px 0.5px 1px #000;
+}
+}
 </style>
 </head>
-<body onload="javascript:alert('just click and edit &#9997;.');">
+<body onload="alert('just click and edit &#9997;');">
   <div id="main" contenteditable="true">
   <h1>CURRICULUM VITAE</h1>
   <div id="address">
@@ -100,7 +117,7 @@ summary {
   <table>
     <tr>
       <td>C/O</td>
-      <td>: FATHER'S NAME</td>
+      <td>: NARENDRANATH KARMAKAR</td>
     </tr>
     <tr>
       <td>VILL.+P.O.</td>
@@ -124,15 +141,15 @@ summary {
     </tr>
     <tr>
       <td>CONTACT NO</td>
-      <td>: 0123456789</td>
+      <td>: 8597297638</td>
     </tr>
     <tr>
       <td>E-MAIL</td>
-      <td>: abc123@gmail.com</td>
+      <td>: kmanas841@gmail.com</td>
     </tr>
   </table>
   
-  <img id="selfPhoto" src="https://i.ibb.co/THcF21c/IMG-20220109-220405.jpg" alt="selfPhoto" width="100" height="125">
+  <img id="selfPhoto" src="https://i.ibb.co/HY8yGnT/IMG-20190314-162108.jpg" alt="selfPhoto" width="100" height="125">
   </div>
   
   <div id="profile">
@@ -144,7 +161,7 @@ summary {
       </tr>
       <tr>
         <td>D.O.B</td>
-        <td>: 01.01.0001</td>
+        <td>: 17.08.2000</td>
       </tr>
       <tr>
         <td>HEIGHT</td>
@@ -214,7 +231,7 @@ summary {
   
   <div id="tecEd">
     <h3 style="text-decoration: underline;">TECHNICAL QUALIFICATION :</h3>
-        <table>
+    <table>
       <tr>
         <th>DISCIPLINE</th>
         <th>INSTITUTE</th>
@@ -235,6 +252,7 @@ summary {
         </tr>
     </table>
   </div>
+  
   <div id="hobby">
     <P><strong>AREA OF INTEREST : </strong>PLAYING CHESS, WEBPAGE DESIGN, LISTENING MUSIC.</P>
     <P><strong>CAREER OBJECT : </strong>SEEKING A RESPONSIBLE AND CHALLENGING JOB WITH BETTER PROSPECTIVE.</P>
@@ -246,9 +264,9 @@ summary {
   </div>
   
   <div id="end">
-    <span><b>DATE:</b> 01/01/0001</span>
-    <span><img id="selfSign" src="https://i.ibb.co/899v4Zv/pngfind-com-doctor-image-png-2705446.png" alt="selfSign" width="150"height="30"></span>
-    <span><b>PLACE:</b> SALBEDIA</span>
+    <span><b>DATE : </b>08/01/2022</span>
+    <span><img id="selfSign" src="https://i.ibb.co/dgSzgt6/IMG-20220108-193408.png" alt="selfSign" width="150"height="30"></span>
+    <span><b>PLACE : </b>SALBEDIA</span>
     <span><b>SIGNATURE</b></span>
   </div>
   </div>
@@ -272,12 +290,12 @@ summary {
   </div>
 <script>
 document.getElementById("selfPhoto").addEventListener("click", function() {
-  var photoLink = prompt("enter photo link:");
+  var photoLink = prompt("photo link:");
   document.getElementById("selfPhoto").src = photoLink; 
 });
   
 document.getElementById("selfSign").addEventListener("click", function(){
-  var signLink = prompt("enter link: ");
+  var signLink = prompt("link: ");
   document.getElementById("selfSign").src = signLink;
 });
 
