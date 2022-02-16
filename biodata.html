@@ -30,6 +30,9 @@ details{
 summary {
  color: #0645ad;
 }
+@media print {
+  #outerContent{display:none;}
+}
 </style>
 </head>
 <body onload="alert('just click and edit &#9997;');">
@@ -230,7 +233,6 @@ function prtPdf() {
   if(myCv == true){
     document.getElementById("targetSheet").href = "style.css";
   }
-  document.getElementById("outerContent").style.display = "none";
       window.print();
 }
 </script>
