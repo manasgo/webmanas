@@ -58,7 +58,7 @@ h1 {
   text-shadow: 0.5px 0.5px 1px #ccc;
 }
 #end {
-  margin-top: auto;
+  margin-top: 80px;
   width: 100%;
   display: grid;
   grid-template-columns: auto auto;
